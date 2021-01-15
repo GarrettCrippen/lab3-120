@@ -1,6 +1,6 @@
 /*	Partner(s) Name & E-mail:none
  *	Lab Section: 22
- *	Assignment: Lab # 3 Exercise # 2
+ *	Assignment: Lab # 3 Exercise # 3
  *	Exercise Description: [optional - include for your own benefit]
  *	
  *	I acknowledge all content contained herein, excluding template or example
@@ -18,12 +18,14 @@ int main(void) {
 
 	
 	unsigned char tmpA = 0x00;
+	unsigned char tmpA2 = 0x00;
 	unsigned char tmpC = 0x00;
 	
 	
 while(1) {
 	
-		tmpA = PINA&0x0F;
+		tmpA = PINA&0xF;
+		tmpA2 = PINA&0x70;
 		tmpC = 0x00;
 		
 		
@@ -35,6 +37,8 @@ while(1) {
 		if(tmpA>=1) tmpC = tmpC | 1<<5; 
 		
 		if(tmpA<=4)tmpC = tmpC| 1<<6;
+		
+		if((tmpA2&0x10) &&(tmpA2&0x20)&& !(tmpA2&0x40))tmpC = tmpC | 1<<7;
 		
 		
 		
